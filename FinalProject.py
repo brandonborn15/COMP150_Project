@@ -5,10 +5,9 @@ three='3'
 four='4'
 five='5'
 six='6'
-seven='7'
+seven= '7'
 eight='8'
-nine='9' 
-turnCount = 0
+nine= '9' 
 choice = ' '
 player1Name= ' '
 player2Name= ' '
@@ -16,18 +15,27 @@ player1Symbol= ' '
 player2Symbol= ' '
 player1T= 0
 player2T= 0
-doubles=[]
+doubles=['empty']
 xtally=0
 ytally=0
+xtally = int(xtally)
+ytally = int(ytally)
+turnCount=0
 
 
 def nameSet():
-    player1Name= str(input("Please, enter Player 1's name: "))
+    global player1Name 
+    global player2Name
+    player1Name = str(input("Please, enter Player 1's name: "))
     print(' ')
     player2Name= str(input("Please, enter Player 2's name: "))
     print(' ')
 
 def playerSet():
+    global player1Symbol
+    global player2Symbol
+    global player1Name
+    global player2Name
     player1Symbol = str(input(player1Name+ ", Choose a symbol to play with, \"x\" or \"o\"? \n :"))
     if player1Symbol == 'x' or player1Symbol== 'X':
         player1Symbol='X'
@@ -35,11 +43,14 @@ def playerSet():
     else:
         player1Symbol='O'
         player2Symbol='X'
-    print(player1Name+'plays as '+player1Symbol)
-    print(player2Name+'plays as '+player2Symbol)
+    print(player1Name+' plays as '+player1Symbol)
+    print(player2Name+' plays as '+player2Symbol)
 
 def playOrder():
-    answer = str(input(player1Name+' Do you wish to move first? Yes or No'))
+    global player1Name
+    global player1T
+    global player2T
+    answer = str(input(player1Name+' Do you wish to move first? Yes or No:  '))
     if answer == 'yes' or answer == 'Yes' or answer == 'YES':
         player1T = 0
         player2T = 1
@@ -48,11 +59,33 @@ def playOrder():
         player2T = 0
 
 def draw():
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+   
     print('\n'+'   |  '+one +'  |  '+two+'  |  '+three+'  |  ' + '\n'+ '   ___________________'+'\n'+'   |  '+four+'  |  '+five+'  |  '+six+'  |' + '\n'+ '   ___________________'+'\n'+'   |  '+seven+'  |  '+eight+'  |  '+nine+'  | \n')
+  
 
 def clearBoard():
-    doubles.clear()
-    doubles
+    global doubles
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global turnCount
+    for i in doubles:
+        del i
     one='1'
     two='2'
     three='3'
@@ -81,56 +114,78 @@ def play():
             checkWin()
 
 def player1():
-    turnCount=turnCount+1
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global turnCount
+    global player1Symbol
+    global player2Symbol
+    global player1Name
+    global player2Name
+    global doubles
+    turnCount= turnCount+1
     retryCount=0
-    choice= str(input(player1Name+", enter the number that corresponds to the cell: "))
-    if turnCount >=4:
-        checkWin()
+    choice= int(input(player1Name+", enter the number that corresponds to the cell: "))
+    
+    if 1==choice:
+        if 1 not in doubles:
+            doubles.insert(0,choice)
+            one = player1Symbol
+            draw()
 
-    elif one==choice & one not in doubles:
-        doubles.insert(0,choice)
-        one = player1Symbol 
-        draw()
+    elif 2==choice:
+        if 2 not in doubles:
+            doubles.insert(0,choice)
+            two = (player1Symbol)
+            draw()
 
-    elif two==choice & two not in doubles:
-        doubles.insert(0,choice)
-        two = player1Symbol
-        draw()
+    elif 3==choice:
+        if 3 not in doubles:
+            doubles.insert(0,choice)
+            three = (player1Symbol)
+            draw()
 
-    elif three==choice & three not in doubles:
-        doubles.insert(0,choice)
-        three = player1Symbol
-        draw()
+    elif 4==choice:
+        if 4 not in doubles:
+            doubles.insert(0,choice)
+            four = (player1Symbol)
+            draw()
 
-    elif four==choice & four not in doubles:
-        doubles.insert(0,choice)
-        four = player1Symbol
-        draw()
+    elif 5==choice:
+        if 5 not in doubles:
+            doubles.insert(0,choice)
+            five = (player1Symbol)
+            draw()
 
-    elif five==choice & five not in doubles:
-        doubles.insert(0,choice)
-        five = player1Symbol
-        draw()
+    elif 6==choice:
+        if 6 not in doubles:
+            doubles.insert(0,choice)
+            six = (player1Symbol)
+            draw()
 
-    elif six==choice & six not in doubles:
-        doubles.insert(0,choice)
-        six = player1Symbol
-        draw()
+    elif 7==choice:
+        if 7 not in doubles:
+            doubles.insert(0,choice)
+            seven = (player1Symbol)
+            draw()
 
-    elif seven==choice & seven not in doubles:
-        doubles.insert(0,choice)
-        seven = player1Symbol
-        draw()
+    elif 8==choice:
+        if 8 not in doubles:
+            doubles.insert(0,choice)
+            eight = (player1Symbol)
+            draw()
 
-    elif eight==choice & eight not in doubles:
-        doubles.insert(0,choice)
-        eight = player1Symbol
-        draw()
-
-    elif nine==choice & nine not in doubles:
-        doubles.insert(0,choice)
-        nine = player1Symbol
-        draw()
+    elif 9==choice:
+        if 9 not in doubles:
+            doubles.insert(0,choice)
+            nine = (player1Symbol)
+            draw()
     else:
         print('INVALID INPUT \n Try again please: ')
         retryCount=retryCount+1
@@ -143,55 +198,68 @@ def player1():
     retryCount=0
 
 def player2():
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global turnCount
+    global player1Symbol
+    global player2Symbol
+    global player1Name
+    global player2Name
+    global doubles
     turnCount=turnCount+1
     retryCount=0
-    choice= str(input(player2Name+", enter the number that corresponds to the cell: "))
-    if turnCount >=4:
-        checkWin()
-
-    elif one==choice & one not in doubles:
+    choice= int(input(player2Name+", enter the number that corresponds to the cell: "))
+    
+    if 1==choice and 1 not in doubles:
         doubles.insert(0,choice)
-        one = player2Symbol 
+        one = str(player2Symbol) 
         draw()
 
-    elif two==choice & two not in doubles:
+    elif 2==choice and 2 not in doubles:
         doubles.insert(0,choice)
-        two = player2Symbol
+        two = str(player2Symbol) 
         draw()
 
-    elif three==choice & three not in doubles:
+    elif 3==choice and 3 not in doubles:
         doubles.insert(0,choice)
-        three = player2Symbol
+        three = str(player2Symbol) 
         draw()
 
-    elif four==choice & four not in doubles:
+    elif 4==choice and 4 not in doubles:
         doubles.insert(0,choice)
-        four = player2Symbol
+        four = str(player2Symbol) 
         draw()
 
-    elif five==choice & five not in doubles:
+    elif 5==choice and 5 not in doubles:
         doubles.insert(0,choice)
-        five = player2Symbol
+        five = str(player2Symbol) 
         draw()
 
-    elif six==choice & six not in doubles:
+    elif 6==choice and 6 not in doubles:
         doubles.insert(0,choice)
-        six = player2Symbol
+        six = str(player2Symbol) 
         draw()
 
-    elif seven==choice & seven not in doubles:
+    elif 7==choice and 7 not in doubles:
         doubles.insert(0,choice)
-        seven = player2Symbol
+        seven = str(player2Symbol) 
         draw()
 
-    elif eight==choice & eight not in doubles:
+    elif 8==choice and 8 not in doubles:
         doubles.insert(0,choice)
-        eight = player2Symbol
+        eight = str(player2Symbol) 
         draw()
 
-    elif nine==choice & nine not in doubles:
+    elif 9==choice and 9 not in doubles:
         doubles.insert(0,choice)
-        nine = player2Symbol
+        nine = str(player2Symbol) 
         draw()
     else:
         print('INVALID INPUT \n Try again please: ')
@@ -205,148 +273,206 @@ def player2():
     retryCount=0
 
 def checkWin():
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global xtally
+    global ytally
+    global player1Symbol
+    global player2Symbol
+    global player1Name
+    global player2Name
     '''----------------------1-----------------------'''
-    if one==two & two==three:
+    if one is two and two is three:
         if one=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+one+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''----------------------2-----------------------'''
-    elif one==four & four==seven:
+    elif one is four and four is seven:
         if one=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+one+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''-----------------------3----------------------'''
-    elif one==five & five==nine:
+    elif one is five and five is nine:
         if one=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+one+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''------------------------4---------------------'''  
-    elif two==five & five==eight:
+    elif two is five and five is eight:
         if two=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+two+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''-----------------------5----------------------'''
-    elif three==six & six==nine:
+    elif three is six and six is nine:
         if three=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+three+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''------------------------6---------------------'''
-    elif seven==five & five==three:
+    elif seven is five and five is three:
         if seven=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+seven+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''----------------------7-----------------------'''  
-    elif four==five & five==six:
+    elif four is five and five is six:
         if four=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+four+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''---------------------8------------------------''' 
-    elif seven==eight & eight==nine:
+    elif seven is eight and eight is nine:
         if seven=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player'+seven+'wins \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
+            print('GAME OVER \n')
+            raise SystemExit
         '''---------------------------------------------'''   
     elif turnCount==9:
-        print('NO WINNER')
+        print('NO WINNER \n')
         if player1Symbol=='X':
-            print('winner tally'+ player1Name+': '+xtally+', '+player2Name+': '+ytally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n '+player2Name+': '+ytally+'\n')
         elif player1Symbol == 'O':
-            print('winner tally'+ player1Name+': '+ytally+', '+player2Name+': '+xtally+'\n')
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
             play()
         else:
-            print('GAME OVER')
-
-
+            print('GAME OVER \n')
+            raise SystemExit
 
 def main():
     nameSet()
