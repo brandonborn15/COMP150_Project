@@ -84,8 +84,7 @@ def clearBoard():
     global eight
     global nine
     global turnCount
-    for i in doubles:
-        del i
+    doubles[:]=[]
     one='1'
     two='2'
     three='3'
@@ -96,11 +95,12 @@ def clearBoard():
     eight='8'
     nine='9'
     turnCount=0
+    
 
 def play():
+    turnCount=0
     clearBoard()
     draw()
-    turnCount=0
     while turnCount<=8:
         if player1T==0:
             player1()
@@ -186,7 +186,7 @@ def player1():
             doubles.insert(0,choice)
             nine = (player1Symbol)
             draw()
-    else:
+    elif choice in doubles:
         print('INVALID INPUT \n Try again please: ')
         retryCount=retryCount+1
         if retryCount==3:
@@ -261,7 +261,7 @@ def player2():
         doubles.insert(0,choice)
         nine = str(player2Symbol) 
         draw()
-    else:
+    elif choice in doubles:
         print('INVALID INPUT \n Try again please: ')
         retryCount=retryCount+1
         if retryCount==3:
@@ -288,6 +288,8 @@ def checkWin():
     global player2Symbol
     global player1Name
     global player2Name
+    xtally = int(xtally)
+    ytally = int(ytally)
     '''----------------------1-----------------------'''
     if one is two and two is three:
         if one=='X':
@@ -305,6 +307,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -326,6 +329,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -347,6 +351,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -368,6 +373,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -389,6 +395,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -410,6 +417,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -431,6 +439,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -452,6 +461,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
@@ -469,6 +479,7 @@ def checkWin():
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n '+player2Name+': '+xtally+'\n')
         newGame = int(input('enter 1 to play agaion or 0 to exit the game: '))
         if newGame==1:
+            clearBoard()
             play()
         else:
             print('GAME OVER \n')
