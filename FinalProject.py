@@ -28,7 +28,7 @@ compPlays = ['Comp dominated cell: ', 'Comp took cell: ', 'Comp moved to cell: '
 '''-------------------------CODE METHODS/ MULTIPLAYER-------------------------'''
 
 def nameSet():
-    global player1Name
+    global player1Name 
     global player2Name
     player1Name = str(input("Please, enter Player 1's name: "))
     print(' ')
@@ -40,7 +40,7 @@ def playerSet():
     global player2Symbol
     global player1Name
     global player2Name
-    player1Symbol = str(input(player1Name + ", choose a symbol to play with, \"x\" or \"o\"? \n : "))
+    player1Symbol = str(input(player1Name+ ", Choose a symbol to play with, \"x\" or \"o\"? \n : "))
     if player1Symbol == 'x' or player1Symbol== 'X':
         player1Symbol='X'
         player2Symbol='O'
@@ -317,7 +317,25 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+two+' wins \n')
+        subTallyM(xtally,ytally)
+        '''-----------------------5----------------------'''
+    elif three is six and six is nine:
+        if three=='X':
+            xtally=xtally+1
+        else:
+            ytally= ytally+1
+        print('Player '+three+' wins \n')
+        subTallyM(xtally,ytally)
+        '''------------------------6---------------------'''
+    elif seven is five and five is three:
+        if seven=='X':
+            xtally=xtally+1
+        else:
+            ytally= ytally+1
+        print('Player '+seven+' wins \n')
+        subTallyM(xtally,ytally)
         '''----------------------7-----------------------'''  
+    elif four is five and five is six:
         if four=='X':
             xtally=xtally+1
         else:
@@ -346,7 +364,6 @@ def main():
     else:
         print('Thank you for reading the rules of the game\n please follow the prompts to begin the game.\n NOTE: Remember format of the game to run the program sucessfully.\n')
         
-    
     GameOverride = str(input("Solo or Multiplayer?\n:  "))
     if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
         nameSet()
@@ -683,15 +700,9 @@ def subComp(choice):
     compMoves.remove(choice)
 
 def README():
-    print(''' Before you begin the game please read the instructions\n so you understand how to properly 
-        use this program. First when you type into the terminal\n please use single or double quotations 
-        to input your answers. You can decide to play against\n the computer or against another player if 
-        you wish. When playing the game, enter the number that\n corrisponds with the proper cell you wish 
-        to control.\n\nNOTE: You do not need to use any quotations for this input, only for inputs that involve letters.\n
-        The game will automatically keep tally of the winners\n for every game, unless you choose to exit the 
-        game then all data will be reset to its default\n constructors. 
-    ''')
-
-
+    file = open('READMEFP1.rtt','r')
+    text= file.read()
+    print(text)
+    file.close()
 
 main()
