@@ -25,7 +25,7 @@ ytally = int(ytally)
 turnCount=0
 retryCount =0
 compPlays = ['Comp dominated cell: ', 'Comp took cell: ', 'Comp moved to cell: ', 'Comp stole cell: ','Comp moved to cell: ', 'Comp wanted to take cell: ']
-'''-------------------------CODE METHODS/ MULTIPLAYER-------------------------'''
+'''-------------------------MULTIPLAYER-------------------------'''
 
 def nameSet():
     global player1Name 
@@ -62,19 +62,6 @@ def playOrder():
         player1T = 1
         player2T = 0
 
-def draw():
-    global one
-    global two
-    global three
-    global four
-    global five
-    global six 
-    global seven
-    global eight
-    global nine
-   
-    print('\n'+'   |  '+one +'  |  '+two+'  |  '+three+'  |  ' + '\n'+ '   ___________________'+'\n'+'   |  '+four+'  |  '+five+'  |  '+six+'  |' + '\n'+ '   ___________________'+'\n'+'   |  '+seven+'  |  '+eight+'  |  '+nine+'  | \n')
-  
 def clearBoard():
     global doubles
     global one
@@ -354,28 +341,7 @@ def checkWin():
     elif turnCount==9:
         print('NO WINNER \n')
         subTallyM(xtally,ytally)
-
-def main():
-    README()
-    print('If you understand How to play again press 1 to play the Game\nIf you do not wish to play the game press 0 to fully exit the program\nIf you do not understand how to play the game please feel free to re-read the instructions')
-    start = int(input('\nEnter 0 to end program or Enter 1 to accept the game: '))
-    if start == 0:
-        print('\nThank you for running this program\n')
-        raise SystemExit
-    else:
-        print('\nThank you for reading the rules of the game\n\nNOTE: Remember format of the game to run the program sucessfully.\n\nPlease follow the prompts to begin the game.')
-        
-    GameOverride = str(input("\nSolo or Multiplayer?\n:  "))
-    if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
-        nameSet()
-        playerSet()
-        playOrder()
-        play()
-    elif(GameOverride == 'solo' or GameOverride=='Solo'):
-        soloNameSet()
-        soloSet()
-        soloOrder()
-        soloPlay()
+   
 '''----------------------COMPUTER MODE @ RANDOM-----------------------'''
 def soloNameSet():
     global player1Name
@@ -666,13 +632,19 @@ def subTallyM(xtally,ytally):
             xtally = str(xtally)
             ytally = str(ytally)
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-    newGame = int(input('Enter 1 to play again or 0 to exit the game: '))
-    if newGame==1:
-        clearBoard()
-        play()
-    else:
-        print('GAME OVER \n')
-        raise SystemExit
+    mainMenu= str(input("\nIf you wish to change game mode type 'menu', if not type 'no':  "))
+    if(mainMenu=='menu' or mainMenu =='Menu'):
+        xtally=0
+        ytally=0
+        menu()
+    elif(mainMenu=='no' or mainMenu=='No'):
+        newGame = int(input('\nEnter 1 to play again or 0 to exit the game: '))
+        if newGame==1:
+            clearBoard()
+            soloPlay()
+        else:
+            print('GAME OVER \n')
+            raise SystemExit
 
 def subTallyS(xtally, ytally):
     global player1Symbol
@@ -686,13 +658,19 @@ def subTallyS(xtally, ytally):
         xtally = str(xtally)
         ytally = str(ytally)
         print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-    newGame = int(input('Enter 1 to play again or 0 to exit the game: '))
-    if newGame==1:
-        clearBoard()
-        soloPlay()
-    else:
-        print('GAME OVER \n')
-        raise SystemExit
+    mainMenu= str(input("\nIf you wish to change game mode type 'menu', if not type 'no':  "))
+    if(mainMenu=='menu' or mainMenu =='Menu'):
+        xtally=0
+        ytally=0
+        menu()
+    elif(mainMenu=='no' or mainMenu=='No'):
+        newGame = int(input('\nEnter 1 to play again or 0 to exit the game: '))
+        if newGame==1:
+            clearBoard()
+            soloPlay()
+        else:
+            print('GAME OVER \n')
+            raise SystemExit
 
 def subComp(choice):
     global doubles
@@ -705,5 +683,43 @@ def README():
     text= file.read()
     print(text)
     file.close()
+'''-----------------------------MAIN METHODS--------------------------'''
+def draw():
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+   
+    print('\n'+'   |  '+one +'  |  '+two+'  |  '+three+'  |  ' + '\n'+ '   ___________________'+'\n'+'   |  '+four+'  |  '+five+'  |  '+six+'  |' + '\n'+ '   ___________________'+'\n'+'   |  '+seven+'  |  '+eight+'  |  '+nine+'  | \n')
+
+def menu():
+    GameOverride = str(input("\nSolo or Multiplayer?\n:  "))
+    if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
+        nameSet()
+        playerSet()
+        playOrder()
+        play()
+    elif(GameOverride == 'solo' or GameOverride=='Solo'):
+        soloNameSet()
+        soloSet()
+        soloOrder()
+        soloPlay()
+
+def main():
+    README()
+    print('If you understand How to play again press 1 to play the Game\nIf you do not wish to play the game press 0 to fully exit the program\nIf you do not understand how to play the game please feel free to re-read the instructions')
+    start = int(input('\nEnter 0 to end program or Enter 1 to accept the game: '))
+    if start == 0:
+        print('\nThank you for running this program\n')
+        raise SystemExit
+    else:
+        print('\nThank you for reading the rules of the game\n\nNOTE: Remember format of the game to run the program sucessfully.\n\nPlease follow the prompts to begin the game.')
+        
+    menu()
 
 main()
