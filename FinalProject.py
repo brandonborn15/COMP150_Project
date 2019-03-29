@@ -23,7 +23,9 @@ ytally=0
 xtally = int(xtally)
 ytally = int(ytally)
 turnCount=0
-'''-------------------------CODE METHODS-------------------------'''
+retryCount =0
+compPlays = ['Comp dominated cell: ', 'Comp took cell: ', 'Comp moved to cell: ', 'Comp stole cell: ','Comp moved to cell: ', 'Comp wanted to take cell: ']
+'''-------------------------CODE METHODS/ MULTIPLAYER-------------------------'''
 
 def nameSet():
     global player1Name 
@@ -45,8 +47,8 @@ def playerSet():
     else:
         player1Symbol='O'
         player2Symbol='X'
-    print(player1Name+' plays as '+player1Symbol)
-    print(player2Name+' plays as '+player2Symbol)
+    print(player1Name+' plays as '+player1Symbol+'\n')
+    print(player2Name+' plays as '+player2Symbol+'\n')
 
 def playOrder():
     global player1Name
@@ -131,10 +133,10 @@ def player1():
     global player1Name
     global player2Name
     global doubles
+    global retryCount
     turnCount= turnCount+1
-    retryCount=0
     choice= int(input(player1Name+", enter the number that corresponds to the cell: "))
-    
+
     if 1==choice and 1 not in doubles:
             doubles.insert(0,choice)
             one = player1Symbol
@@ -179,15 +181,16 @@ def player1():
             doubles.insert(0,choice)
             nine = (player1Symbol)
             draw()
+
     elif choice in doubles:
-        print('INVALID INPUT \n Try again please: ')
-        retryCount=retryCount+1
-        if retryCount==3:
-            print('Max amount of retrys has been reached ' + player2Name +' your turn')
-            turnCount=turnCount-1
-            player2()
-        else:
+            retryCount=retryCount+1
+            print("That cell has already been used, Try again.\n")
             player1()
+            if retryCount==3:
+                print('Max amount of retrys has been reached ' + player2Name +' your turn')
+                turnCount=turnCount-1
+                player2()
+        
     retryCount=0
 
 def player2():
@@ -206,8 +209,8 @@ def player2():
     global player1Name
     global player2Name
     global doubles
+    global retryCount
     turnCount=turnCount+1
-    retryCount=0
     choice= int(input(player2Name+", enter the number that corresponds to the cell: "))
     
     if 1==choice and 1 not in doubles:
@@ -353,6 +356,15 @@ def checkWin():
         subTallyM(xtally,ytally)
 
 def main():
+    README()
+    start = int(input('Enter 0 to decline\n\nEnter 1 to accept'))
+    if start == 0:
+        print('\nThank you for running this program\n')
+        raise SystemExit
+    else:
+        print('Thank you for reading the rules of the game\n please follow the prompts to begin the game.\n NOTE: Remember format of the game to run the program sucessfully.\n')
+        
+    
     GameOverride = str(input("Solo or Multiplayer?\n:  "))
     if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
         nameSet()
@@ -381,8 +393,8 @@ def soloSet():
     else:
         player1Symbol='O'
         player2Symbol='X'
-    print(player1Name+' plays as '+player1Symbol)
-    print('Comp plays as '+player2Symbol)
+    print(player1Name+' plays as '+player1Symbol+'\n')
+    print('Comp plays as '+player2Symbol+'\n')
 
 def soloOrder():
     global player1Name
@@ -417,56 +429,47 @@ def soloPlayer():
     choice= int(input(player1Name+", enter the number that corresponds to the cell: "))
     
     if 1==choice and 1 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(1)
+            subComp(choice)
             one = player1Symbol
             draw()
 
     elif 2==choice and 2 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(2)
+            subComp(choice)
             two = (player1Symbol)
             draw()
 
     elif 3==choice and 3 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(3)
+            subComp(choice)
             three = (player1Symbol)
             draw()
 
     elif 4==choice and 4 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(4)
+            subComp(choice)
             four = (player1Symbol)
             draw()
 
     elif 5==choice and 5 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(5)
+            subComp(choice)
             five = (player1Symbol)
             draw()
 
     elif 6==choice and 6 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(6)
+            subComp(choice)
             six = (player1Symbol)
             draw()
 
     elif 7==choice and 7 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(7)
+            subComp(choice)
             seven = (player1Symbol)
             draw()
 
     elif 8==choice and 8 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(8)
+            subComp(choice)
             eight = (player1Symbol)
             draw()
 
     elif 9==choice and 9 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(9)
+            subComp(choice)
             nine = (player1Symbol)
             draw()
     elif choice in doubles:
@@ -486,14 +489,14 @@ def soloPlay():
     draw()
     while turnCount<=8:
         if player1T==0:
-            player1()
+            soloPlayer()
             compCheckWin()
             comp()
             compCheckWin()
         else:
             comp()
             compCheckWin()
-            player1()
+            soloPlayer()
             compCheckWin()
 
 def comp():
@@ -513,67 +516,53 @@ def comp():
     turnCount= turnCount+1
     choice=0
     choice = random.choice(compMoves)
+    Cplay= random.choice(compPlays)
+    print(Cplay +str(choice))
+    if player1Symbol==str(choice):
+        comp()
     
-    if 1==choice:
-        if 1 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(1)
+    if 1==choice and 1 not in doubles:
+            subComp(choice)
             one = player2Symbol
             draw()
 
-    elif 2==choice:
-        if 2 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(2)
+    elif 2==choice and 2 not in doubles:
+            subComp(choice)
             two = (player2Symbol)
             draw()
 
-    elif 3==choice:
-        if 3 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(3)
+    elif 3==choice and 3 not in doubles:
+            subComp(choice)
             three = (player2Symbol)
             draw()
 
-    elif 4==choice:
-        if 4 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(4)
+    elif 4==choice and 4 not in doubles:
+            subComp(choice)
             four = (player2Symbol)
             draw()
 
-    elif 5==choice:
-        if 5 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(5)
+    elif 5==choice and 5 not in doubles:
+            subComp(choice)
             five = (player2Symbol)
             draw()
 
-    elif 6==choice:
-        if 6 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(6)
+    elif 6==choice and 6 not in doubles:
+            subComp(choice)
             six = (player2Symbol)
             draw()
 
-    elif 7==choice:
-        if 7 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(7)
+    elif 7==choice and 7 not in doubles:
+            subComp(choice)
             seven = (player2Symbol)
             draw()
 
-    elif 8==choice:
-        if 8 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(8)
+    elif 8==choice and 8 not in doubles:
+            subComp(choice)
             eight = (player2Symbol)
             draw()
 
-    elif 9==choice:
-        if 9 not in doubles:
-            doubles.insert(0,choice)
-            compMoves.remove(9)
+    elif 9==choice and 9 not in doubles:
+            subComp(choice)
             nine = (player2Symbol)
             draw()
     
@@ -601,21 +590,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+one+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''----------------------2-----------------------'''
     elif one is four and four is seven:
         if one=='X':
@@ -623,21 +598,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+one+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''-----------------------3----------------------'''
     elif one is five and five is nine:
         if one=='X':
@@ -645,21 +606,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+one+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''------------------------4---------------------'''  
     elif two is five and five is eight:
         if two=='X':
@@ -667,21 +614,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+two+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''-----------------------5----------------------'''
     elif three is six and six is nine:
         if three=='X':
@@ -689,21 +622,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+three+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''------------------------6---------------------'''
     elif seven is five and five is three:
         if seven=='X':
@@ -711,21 +630,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+seven+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''----------------------7-----------------------'''  
     elif four is five and five is six:
         if four=='X':
@@ -733,21 +638,7 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+four+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''---------------------8------------------------''' 
     elif seven is eight and eight is nine:
         if seven=='X':
@@ -755,39 +646,11 @@ def compCheckWin():
         else:
             ytally= ytally+1
         print('Player '+seven+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
         '''---------------------------------------------'''   
     elif turnCount==9:
         print('NO WINNER \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            soloPlay()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyS(xtally, ytally)
 
 '''----------------------------SUB METHODS---------------------------'''
 def subTallyM(xtally,ytally):
@@ -803,13 +666,50 @@ def subTallyM(xtally,ytally):
             xtally = str(xtally)
             ytally = str(ytally)
             print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-    newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
+    newGame = int(input('Enter 1 to play again or 0 to exit the game: '))
     if newGame==1:
         clearBoard()
         play()
     else:
         print('GAME OVER \n')
         raise SystemExit
+
+def subTallyS(xtally, ytally):
+    global player1Symbol
+    global player2Symbol
+    global player1Name
+    if player1Symbol=='X':
+        xtally = str(xtally)
+        ytally = str(ytally)
+        print('Winner Tally \n'+ player1Name+': '+xtally+'\nComp: '+ytally+'\n')
+    elif player1Symbol == 'O':
+        xtally = str(xtally)
+        ytally = str(ytally)
+        print('Winner Tally \n'+ player1Name+': '+ytally+'\nComp: '+xtally+'\n')
+    newGame = int(input('Enter 1 to play again or 0 to exit the game: '))
+    if newGame==1:
+        clearBoard()
+        soloPlay()
+    else:
+        print('GAME OVER \n')
+        raise SystemExit
+
+def subComp(choice):
+    global doubles
+    global compMoves
+    doubles.insert(0,choice)
+    compMoves.remove(choice)
+
+def README():
+    print(''' Before you begin the game please read the instructions\n so you understand how to properly 
+        use this program. First when you type into the terminal\n please use single or double quotations 
+        to input your answers. You can decide to play against\n the computer or against another player if 
+        you wish. When playing the game, enter the number that\n corrisponds with the proper cell you wish 
+        to control.\n\nNOTE: You do not need to use any quotations for this input, only for inputs that involve letters.\n
+        The game will automatically keep tally of the winners\n for every game, unless you choose to exit the 
+        game then all data will be reset to its default\n constructors. 
+    ''')
+
 
 
 main()
