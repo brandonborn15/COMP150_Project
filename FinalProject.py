@@ -700,7 +700,7 @@ def subComp(choice):
     compMoves.remove(choice)
 
 def README():
-    file = open('READMEFP1.rtf','r')
+    file = open('README.txt','r')
     text= file.read()
     print(text)
     file.close()
