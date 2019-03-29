@@ -357,14 +357,14 @@ def checkWin():
 
 def main():
     README()
-    start = int(input('Enter 0 to decline\n\nEnter 1 to accept'))
+    start = int(input('Enter 0 to decline or Enter 1 to accept: '))
     if start == 0:
         print('\nThank you for running this program\n')
         raise SystemExit
     else:
-        print('Thank you for reading the rules of the game\n please follow the prompts to begin the game.\n NOTE: Remember format of the game to run the program sucessfully.\n')
+        print('\nThank you for reading the rules of the game\n\nNOTE: Remember format of the game to run the program sucessfully.\n\nPlease follow the prompts to begin the game.')
         
-    GameOverride = str(input("Solo or Multiplayer?\n:  "))
+    GameOverride = str(input("\nSolo or Multiplayer?\n:  "))
     if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
         nameSet()
         playerSet()
@@ -700,7 +700,7 @@ def subComp(choice):
     compMoves.remove(choice)
 
 def README():
-    file = open('READMEFP1.rtt','r')
+    file = open('READMEFP1.rtf','r')
     text= file.read()
     print(text)
     file.close()
