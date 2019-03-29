@@ -1,5 +1,9 @@
 # COMP150_Project
-TIC TAC TOE- python 
+TIC TAC TOE- python
+.
+.
+.
+.
 Before you begin the game please read the instructions
 so you understand how to properly use this program.
 ------------------------------------------------------------------------
@@ -48,4 +52,14 @@ only for inputs that involve letters
 
 The game will automatically 
 keep tally of the winners for every game, unless you choose to 
-exit the game then all data will be reset to its default  constructors
+exit the game then all data will be reset to it's default constructors
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
