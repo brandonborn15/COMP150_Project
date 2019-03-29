@@ -290,21 +290,7 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+one+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1 to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyM(xtally,ytally)
         '''----------------------2-----------------------'''
     elif one is four and four is seven:
         if one=='X':
@@ -312,21 +298,7 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+ one +'  wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1 to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyM(xtally,ytally)
         '''-----------------------3----------------------'''
     elif one is five and five is nine:
         if one=='X':
@@ -334,21 +306,7 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+one+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1 to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyM(xtally,ytally)
         '''------------------------4---------------------'''  
     elif two is five and five is eight:
         if two=='X':
@@ -356,87 +314,13 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+two+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1 to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
-        '''-----------------------5----------------------'''
-    elif three is six and six is nine:
-        if three=='X':
-            xtally=xtally+1
-        else:
-            ytally= ytally+1
-        print('Player '+three+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
-        '''------------------------6---------------------'''
-    elif seven is five and five is three:
-        if seven=='X':
-            xtally=xtally+1
-        else:
-            ytally= ytally+1
-        print('Player '+seven+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
         '''----------------------7-----------------------'''  
-    elif four is five and five is six:
         if four=='X':
             xtally=xtally+1
         else:
             ytally= ytally+1
         print('Player '+four+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyM(xtally,ytally)
         '''---------------------8------------------------''' 
     elif seven is eight and eight is nine:
         if seven=='X':
@@ -444,39 +328,11 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+seven+' wins \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyM(xtally,ytally)
         '''---------------------------------------------'''   
     elif turnCount==9:
         print('NO WINNER \n')
-        if player1Symbol=='X':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
-        elif player1Symbol == 'O':
-            xtally = str(xtally)
-            ytally = str(ytally)
-            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
-        newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
-        if newGame==1:
-            clearBoard()
-            play()
-        else:
-            print('GAME OVER \n')
-            raise SystemExit
+        subTallyM(xtally,ytally)
 
 def main():
     GameOverride = str(input("Solo or Multiplayer?\n:  "))
@@ -500,7 +356,7 @@ def soloSet():
     global player1Name
     global player1Symbol
     global player2Symbol
-    player1Symbol = str(input(player1Name+ ", choose a symbol to play with, \"x\" or \"o\"? \n : "))
+    player1Symbol = str(input(player1Name+ ", Choose a symbol to play with, \"x\" or \"o\"? \n : "))
     if player1Symbol == 'x' or player1Symbol== 'X':
         player1Symbol='X'
         player2Symbol='O'
@@ -914,4 +770,28 @@ def compCheckWin():
         else:
             print('GAME OVER \n')
             raise SystemExit
+
+'''----------------------------SUB METHODS---------------------------'''
+def subTallyM(xtally,ytally):
+    global player1Symbol
+    global player2Symbol
+    global player1Name
+    global player2Name
+    if player1Symbol=='X':
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+xtally+'\n'+player2Name+': '+ytally+'\n')
+    elif player1Symbol == 'O':
+            xtally = str(xtally)
+            ytally = str(ytally)
+            print('Winner Tally \n'+ player1Name+': '+ytally+'\n'+player2Name+': '+xtally+'\n')
+    newGame = int(input('Enter 1to play agaion or 0 to exit the game: '))
+    if newGame==1:
+        clearBoard()
+        play()
+    else:
+        print('GAME OVER \n')
+        raise SystemExit
+
+
 main()
