@@ -28,7 +28,7 @@ compPlays = ['Comp dominated cell: ', 'Comp took cell: ', 'Comp moved to cell: '
 '''-------------------------CODE METHODS/ MULTIPLAYER-------------------------'''
 
 def nameSet():
-    global player1Name 
+    global player1Name
     global player2Name
     player1Name = str(input("Please, enter Player 1's name: "))
     print(' ')
@@ -40,7 +40,7 @@ def playerSet():
     global player2Symbol
     global player1Name
     global player2Name
-    player1Symbol = str(input(player1Name+ ", Choose a symbol to play with, \"x\" or \"o\"? \n : "))
+    player1Symbol = str(input(player1Name + ", choose a symbol to play with, \"x\" or \"o\"? \n : "))
     if player1Symbol == 'x' or player1Symbol== 'X':
         player1Symbol='X'
         player2Symbol='O'
@@ -317,25 +317,7 @@ def checkWin():
         else:
             ytally= ytally+1
         print('Player '+two+' wins \n')
-        subTallyM(xtally,ytally)
-        '''-----------------------5----------------------'''
-    elif three is six and six is nine:
-        if three=='X':
-            xtally=xtally+1
-        else:
-            ytally= ytally+1
-        print('Player '+three+' wins \n')
-        subTallyM(xtally,ytally)
-        '''------------------------6---------------------'''
-    elif seven is five and five is three:
-        if seven=='X':
-            xtally=xtally+1
-        else:
-            ytally= ytally+1
-        print('Player '+seven+' wins \n')
-        subTallyM(xtally,ytally)
         '''----------------------7-----------------------'''  
-    elif four is five and five is six:
         if four=='X':
             xtally=xtally+1
         else:
