@@ -357,7 +357,8 @@ def checkWin():
 
 def main():
     README()
-    start = int(input('Enter 0 to decline or Enter 1 to accept: '))
+    print('If you understand How to play again press 1 to play the Game\nIf you do not wish to play the game press 0 to fully exit the program\nIf you do not understand how to play the game please feel free to re-read the instructions')
+    start = int(input('\nEnter 0 to end program or Enter 1 to accept the game: '))
     if start == 0:
         print('\nThank you for running this program\n')
         raise SystemExit
