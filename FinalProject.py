@@ -641,7 +641,7 @@ def subTallyM(xtally,ytally):
         newGame = int(input('\nEnter 1 to play again or 0 to exit the game: '))
         if newGame==1:
             clearBoard()
-            soloPlay()
+            play()
         else:
             print('GAME OVER \n')
             raise SystemExit
