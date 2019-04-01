@@ -1,4 +1,5 @@
 import random
+import time
 '''-----------------------GLOBAL VARIABLES-----------------------'''
 one='1'
 two='2'
@@ -717,6 +718,7 @@ def clearBoard():
 
 def main():
     README()
+    T=0
     print('If you understand How to play again press 1 to play the Game\nIf you do not wish to play the game press 0 to fully exit the program\nIf you do not understand how to play the game please feel free to re-read the instructions')
     start = int(input('\nEnter 0 to end program or Enter 1 to accept the game: '))
     if start == 0:
@@ -726,6 +728,15 @@ def main():
         print('\nThank you for reading the rules of the game\n\nNOTE: Remember format of the game to run the program sucessfully.\n\nPlease follow the prompts to begin the game.')
     else:
         print('\nInvalid input, Read the instructions and try again')
+        while T<=3:
+            T=T+1
+            print('.')
+            if(T==3):
+                    break
+            try:
+                time.sleep(1)
+            except:
+                continue
         main()
     menu()
 main()
