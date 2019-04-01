@@ -44,7 +44,7 @@ def playerSet():
     if player1Symbol == 'x' or player1Symbol== 'X':
         player1Symbol='X'
         player2Symbol='O'
-    else:
+    elif player1Symbol == 'O' or player1Symbol== 'o':
         player1Symbol='O'
         player2Symbol='X'
     print(player1Name+' plays as '+player1Symbol+'\n')
@@ -58,35 +58,9 @@ def playOrder():
     if answer == 'yes' or answer == 'Yes' or answer == 'YES':
         player1T = 0
         player2T = 1
-    else:
+    elif answer == 'no' or answer == 'No' or answer == 'NO':
         player1T = 1
         player2T = 0
-
-def clearBoard():
-    global doubles
-    global one
-    global two
-    global three
-    global four
-    global five
-    global six 
-    global seven
-    global eight
-    global nine
-    global turnCount
-    global compMoves
-    doubles[:]=[]
-    compMoves = [1,2,3,4,5,6,7,8,9]
-    one='1'
-    two='2'
-    three='3'
-    four='4'
-    five='5'
-    six='6'
-    seven='7'
-    eight='8'
-    nine='9'
-    turnCount=0  
 
 def play():
     turnCount=0
@@ -169,7 +143,7 @@ def player1():
             nine = (player1Symbol)
             draw()
 
-    elif choice in doubles:
+    elif choice in doubles or choice not in range(9):
             retryCount=retryCount+1
             print("That cell has already been used, Try again.\n")
             player1()
@@ -244,7 +218,7 @@ def player2():
         doubles.insert(0,choice)
         nine = str(player2Symbol) 
         draw()
-    elif choice in doubles:
+    elif choice in doubles or choice not in range(9):
         print('INVALID INPUT \n Try again please: ')
         retryCount=retryCount+1
         if retryCount==3:
@@ -438,7 +412,7 @@ def soloPlayer():
             subComp(choice)
             nine = (player1Symbol)
             draw()
-    elif choice in doubles:
+    elif choice in doubles or choice not in range(9):
         print('INVALID INPUT \n Try again please: ')
         retryCount=retryCount+1
         if retryCount==3:
@@ -698,6 +672,11 @@ def draw():
     print('\n'+'   |  '+one +'  |  '+two+'  |  '+three+'  |  ' + '\n'+ '   ___________________'+'\n'+'   |  '+four+'  |  '+five+'  |  '+six+'  |' + '\n'+ '   ___________________'+'\n'+'   |  '+seven+'  |  '+eight+'  |  '+nine+'  | \n')
 
 def menu():
+    global xtally
+    global ytally
+    xtally=0
+    ytally=0
+
     GameOverride = str(input("\nSolo or Multiplayer?\n:  "))
     if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
         nameSet()
@@ -710,6 +689,32 @@ def menu():
         soloOrder()
         soloPlay()
 
+def clearBoard():
+    global doubles
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global turnCount
+    global compMoves
+    doubles[:]=[]
+    compMoves = [1,2,3,4,5,6,7,8,9]
+    one='1'
+    two='2'
+    three='3'
+    four='4'
+    five='5'
+    six='6'
+    seven='7'
+    eight='8'
+    nine='9'
+    turnCount=0         
+
 def main():
     README()
     print('If you understand How to play again press 1 to play the Game\nIf you do not wish to play the game press 0 to fully exit the program\nIf you do not understand how to play the game please feel free to re-read the instructions')
@@ -717,9 +722,10 @@ def main():
     if start == 0:
         print('\nThank you for running this program\n')
         raise SystemExit
-    else:
+    elif start == 1:
         print('\nThank you for reading the rules of the game\n\nNOTE: Remember format of the game to run the program sucessfully.\n\nPlease follow the prompts to begin the game.')
-        
+    else:
+        print('\nInvalid input, Read the instructions and try again')
+        main()
     menu()
-
 main()
