@@ -1,7 +1,7 @@
-'''---------------------------IMPORTS----------------------------'''
+'''-----------------------------IMPORTS-------------------------------'''
 import random
 import time
-'''-----------------------GLOBAL VARIABLES-----------------------'''
+'''-------------------------GLOBAL VARIABLES--------------------------'''
 one='1'
 two='2'
 three='3'
@@ -26,8 +26,9 @@ xtally = int(xtally)
 ytally = int(ytally)
 turnCount=0
 retryCount =0
+Dwin=0
 compPlays = ['Comp dominated cell: ', 'Comp took cell: ', 'Comp moved to cell: ', 'Comp stole cell: ','Comp moved to cell: ', 'Comp wanted to take cell: ']
-'''-------------------------MULTIPLAYER-------------------------'''
+'''---------------------------MULTIPLAYER-----------------------------'''
 
 def nameSet():
     global player1Name 
@@ -455,6 +456,7 @@ def comp():
     global player2Symbol
     global doubles
     global compMoves
+    timer(2)
     turnCount= turnCount+1
     choice=0
     choice = random.choice(compMoves)
@@ -525,7 +527,7 @@ def compCheckWin():
     global player1Name
     xtally = int(xtally)
     ytally = int(ytally)
-    '''----------------------1-----------------------'''
+    '''----------------------1---------------------------'''
     if one is two and two is three:
         if one=='X':
             xtally=xtally+1
@@ -549,7 +551,7 @@ def compCheckWin():
             ytally= ytally+1
         print('Player '+one+' wins \n')
         subTallyS(xtally, ytally)
-        '''------------------------4---------------------'''  
+        '''-----------------------4----------------------'''  
     elif two is five and five is eight:
         if two=='X':
             xtally=xtally+1
@@ -565,7 +567,7 @@ def compCheckWin():
             ytally= ytally+1
         print('Player '+three+' wins \n')
         subTallyS(xtally, ytally)
-        '''------------------------6---------------------'''
+        '''-----------------------6----------------------'''
     elif seven is five and five is three:
         if seven=='X':
             xtally=xtally+1
@@ -594,7 +596,7 @@ def compCheckWin():
         print('NO WINNER \n')
         subTallyS(xtally, ytally)
 
-'''----------------------------SUB METHODS---------------------------'''
+'''----------------------------SUB METHODS----------------------------'''
 def subTallyM(xtally,ytally):
     global player1Symbol
     global player2Symbol
@@ -659,7 +661,150 @@ def README():
     text= file.read()
     print(text)
     file.close()
+'''--------------------------------DEMO-------------------------------'''
+def demo():
+    global Dwin
+    cs1='X'
+    cs2='O'
+    draw()
+    while compMoves > 0:
+        csD(cs1)
+        demoWin()
+        timer(2)
+        if Dwin==1:
+            break
+        '''--------'''
+        csD(cs2)
+        demoWin()
+        timer(2)
+        if Dwin==1:
+            break
+    clearBoard()
+    print('Thank you for watching the demo for this game.\nWhat game mode do you wish to play?\n')
+def demoWin():
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global turnCount
+    global Dwin
+    '''----------------------1---------------------------'''
+    if one is two and two is three:
+        print('Player '+one+' wins \n')   
+        Dwin=1
+        '''----------------------2-----------------------'''
+    elif one is four and four is seven:
+        print('Player '+one+' wins \n')
+        Dwin=1
+        '''-----------------------3----------------------'''
+    elif one is five and five is nine:
+        print('Player '+one+' wins \n')
+        Dwin=1
+        '''-----------------------4----------------------'''  
+    elif two is five and five is eight:
+        print('Player '+two+' wins \n')
+        Dwin=1
+        '''-----------------------5----------------------'''
+    elif three is six and six is nine:
+        print('Player '+six+' wins \n')
+        Dwin=1
+        '''-----------------------6----------------------'''
+    elif seven is five and five is three:
+        print('Player '+five+' wins \n')
+        Dwin=1
+        '''----------------------7-----------------------'''  
+    elif four is five and five is six:
+        print('Player '+four+' wins \n')
+        Dwin=1
+        '''---------------------8------------------------''' 
+    elif seven is eight and eight is nine:
+        print('Player '+nine+' wins \n')
+        Dwin=1
+        '''---------------------------------------------'''   
+    elif turnCount==9:
+        print('NO WINNER \n')
+        Dwin=1    
+
+def csD(x):
+    global one
+    global two
+    global three
+    global four
+    global five
+    global six 
+    global seven
+    global eight
+    global nine
+    global player2Symbol
+    global doubles
+    global compMoves
+    global turnCount
+    turnCount=turnCount+1
+    choice=0
+    choice = random.choice(compMoves)
+    print('Player: '+x+' moves to cell '+str(choice))
+    if 1==choice and 1 not in doubles:
+            subComp(choice)
+            one = x
+            draw()
+
+    elif 2==choice and 2 not in doubles:
+            subComp(choice)
+            two = x
+            draw()
+
+    elif 3==choice and 3 not in doubles:
+            subComp(choice)
+            three = x
+            draw()
+
+    elif 4==choice and 4 not in doubles:
+            subComp(choice)
+            four = x
+            draw()
+
+    elif 5==choice and 5 not in doubles:
+            subComp(choice)
+            five = x
+            draw()
+
+    elif 6==choice and 6 not in doubles:
+            subComp(choice)
+            six = x
+            draw()
+
+    elif 7==choice and 7 not in doubles:
+            subComp(choice)
+            seven = x
+            draw()
+
+    elif 8==choice and 8 not in doubles:
+            subComp(choice)
+            eight = x
+            draw()
+
+    elif 9==choice and 9 not in doubles:
+            subComp(choice)
+            nine = x
+            draw()
 '''-----------------------------MAIN METHODS--------------------------'''
+def timer(x):
+    T=0
+    while T<=x:
+            T=T+1
+            print('.')
+            if(T==x):
+                    break
+            try:
+                time.sleep(1)
+            except:
+                continue
+
 def draw():
     global one
     global two
@@ -678,7 +823,8 @@ def menu():
     global ytally
     xtally=0
     ytally=0
-
+    timer(2)
+    print('\n\n\n\nWhat game mode do you wish to play?')
     GameOverride = str(input("\nSolo or Multiplayer?\n:  "))
     if GameOverride=='multiplayer' or GameOverride == 'Multiplayer':
         nameSet()
@@ -719,7 +865,6 @@ def clearBoard():
 
 def main():
     README()
-    T=0
     print('If you understand How to play again press 1 to play the Game\nIf you do not wish to play the game press 0 to fully exit the program\nIf you do not understand how to play the game please feel free to re-read the instructions')
     start = int(input('\nEnter 0 to end program or Enter 1 to accept the game: '))
     if start == 0:
@@ -729,15 +874,10 @@ def main():
         print('\nThank you for reading the rules of the game\n\nNOTE: Remember format of the game to run the program sucessfully.\n\nPlease follow the prompts to begin the game.')
     else:
         print('\nInvalid input, Read the instructions and try again')
-        while T<=3:
-            T=T+1
-            print('.')
-            if(T==3):
-                    break
-            try:
-                time.sleep(1)
-            except:
-                continue
+        timer(3)
         main()
+    demoOption= str(input('\nWould you like to watch the demo for this game?\n         Yes or No?:  '))
+    if demoOption == 'Yes' or demoOption =='yes' or demoOption == 'YES':
+        demo()
     menu()
 main()
