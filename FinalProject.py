@@ -664,10 +664,11 @@ def README():
 '''--------------------------------DEMO-------------------------------'''
 def demo():
     global Dwin
+    global turnCount
     cs1='X'
     cs2='O'
     draw()
-    while compMoves > 0:
+    while turnCount <= 9:
         csD(cs1)
         demoWin()
         timer(2)
