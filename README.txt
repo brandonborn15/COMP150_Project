@@ -9,6 +9,7 @@ so you understand how to properly use this program.
 ------------------------------------------------------------------------
 First when you type into the terminal please use single 
 or double quotations to input your answers. 
+NOTE: If you are in python shell you do not need to use quotations
 
 EXAMPLE/ 
 
