@@ -21,6 +21,17 @@ subComp()/CheckWin()/compCheckWin()/subTallys()/subTallyM(): All work collective
 
 Draw(): prints out the game board with a sequence of variables and strings in a specific order and this board constantly changes throughout the game.
   Appearence: 
+|  X  |  2  |  3  |
+___________________
+|  4  |  5  |  6  |
+___________________
+|  7  |  8  |  9  |
+
+menu(): Prompts the use for which game mode they want to play and tells them to type the mode they want to play and sends them to that set of corrisponding methods
+
+clearBoard(): resets all changed global variables except for the user specific ones and resets them to their default constructors
+
+main(): implements a time import and prints out the README text file and if the user understand how to work the game than can quit from the start or play the game. If they dont input the correct charcter they need to run the game it will tell the user to re-read the instructions and in 3 seconds will re-run the method again and will do this until one of the two correct options are picked.
 
 
 
